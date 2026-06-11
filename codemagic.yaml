@@ -10,7 +10,7 @@ workflows:
     triggering:
       events:
         - push
-      branches:
+      watched_branches:
         - main
     scripts:
       - name: Install dependencies
