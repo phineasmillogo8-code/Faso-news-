@@ -7,12 +7,6 @@ workflows:
       groups:
         - google_play
       node: 20
-    triggering:
-      events:
-        - push
-      when:
-        watched_branches:
-          - main
     scripts:
       - name: Install dependencies
         script: npm install --legacy-peer-deps
