@@ -1,28 +1,28 @@
 workflows:
   android-release:
-    name: Déploiement Faso News sur Google Play
+    name: Build and Deploy Faso News
     max_build_duration: 30
     instance_type: mac_mini_m1
     environment:
       groups:
-        - google_play # On liera tes clés API ici plus tard
+        - google_play
       node: 20
     triggering:
       events:
         - push
-      branches:
+      watched_branches:
         - main
     scripts:
-      - name: Installer les dépendances
+      - name: Install dependencies
         script: npm install --legacy-peer-deps
-      - name: Build de l'application Web
+      - name: Build web assets
         script: npm run build --if-present
-      - name: Initialiser et Synchroniser Capacitor
+      - name: Sync Capacitor Android
         script: |
           npx cap init "Faso News" com.fasonews.app --web-dir=dist || true
           npx cap add android || true
           npx cap sync
-      - name: Compiler le bundle Android (AAB)
+      - name: Build Android AAB
         script: |
           cd android
           ./gradlew bundleRelease
@@ -30,6 +30,6 @@ workflows:
       - android/app/build/outputs/bundle/release/*.aab
     publishing:
       google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS # Variable pour ta clé JSON Google
-        track: internal # Type de publication (Partage interne, Alpha, Beta ou Production)
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
         
