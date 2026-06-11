@@ -10,8 +10,9 @@ workflows:
     triggering:
       events:
         - push
-      watched_branches:
-        - main
+      when:
+        watched_branches:
+          - main
     scripts:
       - name: Install dependencies
         script: npm install --legacy-peer-deps
