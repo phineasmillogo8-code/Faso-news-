@@ -1,0 +1,6 @@
+{
+  "appId": "com.fasoactu.app",
+  "appName": "Faso Actu",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Faso Actu",
+  "description": "Suivi en temps réel des actualités du Burkina Faso, avec alertes de sécurité géo-localisées, mode hors-ligne, notifications personnalisées et économiseur de données.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
